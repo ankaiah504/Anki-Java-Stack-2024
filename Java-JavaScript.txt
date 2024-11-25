@@ -1,0 +1,1946 @@
+The syntax for multi-dimensional array in Java
+
+Sring Boot
+https://www.javaguides.net/2022/10/spring-boot-microservices-communication-using-spring-cloud-open-feign.html
+
+Datatype [][]Array_Name = new Datatype[row_size][col_size(optional)]; (OR)		
+
+Datatype Array_Name[] = [{Value separated by comma},{Value separated by comma},....}];
+
+//declaration
+int matrix[] = new int[2][2];
+
+//initialization
+matrix[0][0] = 1;
+matrix[0][1] = 2;
+matrix[1][0] = 3;
+matrix[1][1] = 4;
+
+Accessing Elements of Array in Java
+
+Search: 
+
+let obj = arr.find(o => o.name === 'string 1');=>return object
+
+
+Different ways to search an item in an array in JavaScript:
+
+ find() method
+ findIndex() method
+ includes() method
+ some() method
+ indexOf() method
+ filter() method
+ every() method
+
+
+Java:
+Linear Search method
+Binary Search method
+List.contains() method
+Stream.anyMatch() method
+
+
+https://www.scholarhat.com/tutorial/java/java-arrays-single-and-multidimensional-aray
+
+Array Java:
+
+How to print element of Array?
+
+int schoolmarks [] = {25, 30, 50, 10, 5 };
+
+System.out.println (Arrays.toString (schoolmarks));
+
+Output is: [25, 30, 50, 10, 5]
+
+---------------------
+
+How to compare Two Arrays?
+
+int [] num1 = { 1, 2, 3 };
+
+int[] num2 = { 4, 5, 6 };
+
+System.out.println (Arrays. Equals (num1, num2)); //false
+Int [] num3 = {1, 2, 3};
+
+System.out.println (Arrays.equals (num1, num3)); //true
+
+--------------------------------------
+How to sort an Array?
+Int Marks [] = {12, 5, 7, 9};
+
+Arrays.sort(Marks);
+
+System.out.println(Arrays.toString(Marks));//[5, 7, 9, 12]
+
+---------------------------------
+How to copy an array into another array?
+
+Using “For loop”
+Using “Arrays.copyOf()” method
+Using “System.arraycopy()” method
+Using “clone()” method
+
+How to find the missing element in integer array of 1 to 7?
+
+int ar [] = new int[]{1,2,3,5,6,7};
+Get the sum of numbers
+total = n*(n+1)/2
+Subtract all the numbers from sum and
+you will get the missing number.
+According to below logic sumOfNnumberss is 7*(7+1)/2=28
+sumOfElements = 1+2+3+5+6+7=24 missing element is = 28-24=4
+int n = ar.length+1;
+
+int total = n*(n+1)/2;
+
+for(int i =0;i<ar.length;i++){
+
+total -=ar[i];}
+
+System.out.println(total);
+
+https://www.jadeglobal.com/blog/introduction-java-eight-stream-api#:~:text=The%20Stream%20API%20provides%20the,based%20on%20the%20stream%20type.
+
+
+Stream:
+
+List<String>languages = new ArrayList <String>();
+languages.add(“English”);
+languages.add(“German”);
+languages.add(“French”);
+
+If we need to print the list of members,
+Array:
+For(String language:languages)
+{
+System.out.println(language);
+}
+
+
+Languages.stream().forEach(System.out::println);
+
+ASR:English
+German
+French
+
+stream.Filter()::
+
+stream.filter(item->item.startsWith(“E”));
+
+stream.sort():
+
+languages.stream().sorted().forEach(System.out::println);
+
+stream.map():
+
+language.stream().map(item->item.uppercase().forEach(System.out::println));
+
+
+stream.collect():   Stream API provides a collect() method for processing on the stream interface.
+ collect() method is invoked, filtering and mapping will occur, and the object obtained from those actions will be collected.
+
+List<String>
+case language = languages.stream().map(item>item.toUpperCase()).collect(collectors.toList()));
+
+System.out.println(ucaselanguage);
+
+stream.min() & max():
+max(Comparator. comparing (Integer::value of)): To get the max value from a stream of numbers
+
+
+//Getting max number
+Integer maximum = Stream.of(10,13,4,9,2,100).max(Comparator.comparing(Integer::valueOf)).get();
+//Getting min number
+//getting max number
+Integer minimum = Stream.of(10,13,4,9,2,100).min(Comparator.comparing(Integer::valueOf)).get();
+System.out.println(“Max number is: ”+maximum);
+System.out.println(“Min number is: ”+minimum);
+
+
+long count = languages.stream().filter(item->item.getName().startsWith(‘G’)).count();
+count() method returns a long, which is the count of elements matching the filter criteria.
+
+Finding all distinct salaries among all employees:
+
+List<Double> distinctSalaries = employeesList.stream()
+                        .map( e -> e.getSalary() )
+                        .distinct()
+                        .collect(Collectors.toList());
+
+System.out.println(distinctSalaries);
+
+
+========================
+ A List of Strings to Uppercase
+ 
+    List<String> alpha = Arrays.asList("a", "b", "c", "d");
+	
+	List<String> collect = alpha.stream().map(String::toUpperCase).collect(Collectors.toList());
+        System.out.println(collect); //[A, B, C, D]
+		
+		// Extra, streams apply to any data type.
+        List<Integer> num = Arrays.asList(1,2,3,4,5);
+        List<Integer> collect1 = num.stream().map(n -> n * 2).collect(Collectors.toList());
+        System.out.println(collect1); //[2, 4, 6, 8, 10]
+======================================
+
+Stream concat() method
+
+Stream<Integer> firstStream = Stream.of(1, 2, 3);
+	    Stream<Integer> secondStream = Stream.of(4, 5, 6);
+	    
+	    Stream<Integer> resultingStream = Stream.concat(firstStream, secondStream);
+	    
+	    System.out.println( resultingStream.collect(Collectors.toList()) );
+[1, 2, 3, 4, 5, 6]
+
+Merge multiple streams:
+	Stream<Integer> first = Stream.of(1, 2);
+	    Stream<Integer> second = Stream.of(3,4);
+	    Stream<Integer> third = Stream.of(5, 6);
+	    Stream<Integer> fourth = Stream.of(7,8);
+	    
+	    Stream<Integer> resultingStream = Stream.concat(first, concat(second, concat(third, fourth)));
+	    
+	    System.out.println( resultingStream.collect(Collectors.toList()) );
+
+
+
+[1, 2, 3, 4, 5, 6, 7, 8]
+
+	Stream<Integer> firstStream = Stream.of(1, 2, 3, 4, 5, 6);
+		Stream<Integer> secondStream = Stream.of(4, 5, 6, 7, 8, 9);
+
+		Stream<Integer> resultingStream = Stream.concat(firstStream, secondStream)
+												.distinct();
+
+		System.out.println( resultingStream.collect(Collectors.toList()) );
+=============================================================		
+	Java HashMap:
+
+---Internal data structure is Hash table
+---It stores elements in key/value pairs. Here, keys are unique identifiers used to associate each value on a map.
+
+Create a HashMap:
+
+// hashMap creation with 8 capacity and 0.6 load factor
+HashMap<K, V> numbers = new HashMap<>();
+
+Operations on Java HashMap:
+Add elements----put() method to add elements
+Access elements---// get() method to get value
+Change elements
+Remove elements
+HashMap: {1=Java, 2=Python, 3=JavaScript}
+Keys: [1, 2, 3]
+Values: [Java, Python, JavaScript]
+Key/Value mappings: [1=Java, 2=Python, 3=JavaScript]
+Return --------Keys in the map====languages.keySet();
+Return -------values in the map====languages.values(); 
+Return-------- Group of key value pairs
+
+https://medium.com/@veenaraofr/java8-stream-api-commonly-asked-questions-about-employee-highest-salary-99c21cec4d98
+		
+String:
+	
+== checks if both objects point to the same memory location whereas .equals() evaluates to the comparison of values in the objects.
+
+Step1:
+		
+        String s1 = "HELLO";
+        String s2 = "HELLO";
+        String s3 =  new String("HELLO");
+ 
+        System.out.println(s1 == s2); // true
+        System.out.println(s1 == s3); // false
+        System.out.println(s1.equals(s2)); // true
+        System.out.println(s1.equals(s3)); // true
+
+Step2:
+        Thread t = new Thread();
+        Object o = new Object();
+        String s = new String("GEEKS");
+ 
+        System.out.println(t == o); false
+        System.out.println(o == s); false
+ 
+       // Uncomment to see error 
+       System.out.println(t==s);  error imcompatable type
+	   
+	   
+	   true- If strings are equal
+false- if strings are not equal
+
+Step3:
+
+        Thread t1 = new Thread();
+        Thread t2 = new Thread();
+        Thread t3 = t1;
+ 
+        String s1 = new String("GEEKS");
+        String s2 = new String("GEEKS");
+ 
+        System.out.println(t1 == t3); true
+        System.out.println(t1 == t2); false
+        System.out.println(s1 == s2); false
+ 
+        System.out.println(t1.equals(t2)); false
+        System.out.println(s1.equals(s2)); true
+		
+		https://testbook.com/interview/java-string-interview-questions
+What is the difference between String, StringBuilder, and StringBuffer?
+String is immutable, meaning once a string object is created, it cannot be modified. StringBuilder and StringBuffer are mutable, meaning we can modify them after creation. StringBuilder is faster than StringBuffer, but not thread-safe. StringBuffer is thread-safe, but slower than StringBuilder.
+
+What are some commonly used types of functional interface ?
+Consumer — Accepts argument but does not return any value
+Predicate — Performs test and returns a boolean value
+Supplier — doesn’t take any argument but returns a value.
+Function — Transfers argument into returnable value
+
+Why functional interface was introduced in java ?
+
+Functional interfaces ensure that there is only one abstract method defined in the interface.
+Before Java 8 we had to implement these interfaces or create antonymous inner classes to implement methods.
+It enables users to use functional programming in Java.
+Allows users to use lambda expressions.
+
+Can functional interface inherit/implement another interface ?
+
+functional interface can inherit another interface if it contains only static and default methods in it.
+
+JAVA-Script:
+==========================================================================================
+Callbacks:
+
+Ex:
+function fetchData(callback) {
+    setTimeout(() => {
+        callback('Data fetched');
+    }, 1000);
+}
+
+fetchData((result) => {
+    console.log(result); // Output: Data fetched
+});
+
+ fetchData() function which has a timeout of 1 second. That means the result will be rendered after 1 second.
+ 
+ Callback hell problem: It creates a problem when we have multiple asynchronous operations. There it forms a nested structure which becomes complicated and hard to read code.
+ 
+ Promises:
+ 
+ Promises is a representation of completion or failure of any asynchronous operation. It allows chaining of multiple asynchronous operations. There are basically 3 states in promises i.e., resolve, pending and reject.
+ 
+ function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Data fetched');
+        }, 1000);
+    });
+}
+
+fetchData()
+    .then((result) => {
+        console.log(result); // Output: Data fetched
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+Chaining Promise:
+
+fetchData()
+    .then((result) => {
+        return processData(result);
+    })
+    .then((processedData) => {
+        console.log(processedData);
+    })
+    .catch((error) => {
+        console.error(error);
+    });
+	
+	
+	Advantages of Promises:
+	Promises solves the main problem of callback hell by providing chaining. This makes code more readable and clean.
+Error handling is improved with the help of promises as we can use .catch() for error handling in promises.
+
+Disadvantages of Promises:
+It requires deep understanding of Promises API as it includes multiple properties and methods
+
+Async/Await:
+
+
+Async/await is a feature that is built on top of promises to make it better and efficient. It is more concise and provides a synchronous-like way to write asynchronous programs. await keyword is always used inside the async function scope.
+
+async function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Data fetched');
+        }, 1000);
+    });
+}
+
+async function getData() {
+    try {
+        const result = await fetchData();
+        console.log(result); // Output: Data fetched
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+getData();
+
+Advantages of Async/Await:
+
+It is much more readable as compared to promises and callbacks. It is much alike synchronous code which is easier to understand.
+It is built on top of the promises which provides compatibility between the two.
+Disadvantages of Async/Await
+
+It has limited support in the older versions.
+
+JavaScript:
+======================================================================================
+
+. Difference between “ == “ and “ === “ operators.
+
+var x = 2;
+var y = "2";
+(x == y)  // Returns true since the value of both x and y is the same
+(x === y) // Returns false since the typeof x is "number" and typeof y is "string"
+
+7. Is javascript a statically typed or a dynamically typed language?
+JavaScript is a dynamically typed language. In a dynamically typed language, the type of a variable is checked during run-time in contrast to a statically typed language, where the type of a variable is checked during compile-time.
+
+8. What is NaN property in JavaScript?
+NaN property represents the “Not-a-Number” value. It indicates a value that is not a legal number.
+
+typeof of NaN will return a Number.
+
+Note- isNaN() function converts the given value to a Number type, and then equates to NaN
+isNaN(345)   // Returns false
+isNaN('1')  // Returns false, since '1' is converted to Number type which results in 0 ( a number) 
+isNaN(true) // Returns false, since true converted to Number type results in 1 ( a number)
+isNaN(false) // Returns false
+isNaN(undefined) // Returns true
+
+
+
+================================================================================
+What is the use of @FunctionalInterface annotation?
+
+Without annotation: If the programmer does not specify annotation then the interface can contain any number of abstract methods. If the interface contains only an abstract method, then it considers a functional interface otherwise not.
+
+Example of functional interface without annotation:
+interface ExampleOfFunctionInterface 
+{
+    public void firstMethod();
+}
+
+With annotation: If the programmer specifies annotation then the interface can contain only one abstract method. If the programmer specifies more than one abstract method, then the compiler shows the error message “Invalid ‘@FunctionalInterface’ annotation”.
+
+
+@FunctionalInterface
+interface ExampleOfFunctionInterface 
+{
+    public void firstMethod();
+}
+
+Important points about the functional interface
+
+1. In the functional interface, only one abstract method is allowed. If the programmer tries to add any other abstract method, then the compiler will show errors. The programmer must remove the @FunctionInterface annotation to add another abstract method, but it will make the interface a non-functional interface.
+
+2. You can create a functional interface without @FunctionalInterface annotation. This annotation is only for informing the compiler to enforce a single abstract method inside the interface.
+
+3. From Java 8 onwards, the interface can contain the default method. In the interface default method has an implementation, they are not abstract.
+Conceptually, a functional interface can contain only one abstract method. Since the default method is not abstract, So, you can add the default method also in the functional interface.
+
+@FunctionalInterface
+interface ExampleOfFunctionInterface 
+{
+    public void firstMethod();
+    default void secondMethod() 
+    {
+        System.out.println("It is a default method");
+    }
+}
+
+4. You can’t inherit any functional interface to another functional interface. Because it breaks the law of functional interface has exactly one abstract method.
+
+@FunctionalInterface
+interface ExampleOfFunctionInterface 
+{
+    public void firstMethod();
+    
+}
+@FunctionalInterface
+interface ExampleOfAnotherFunctionInterface extends ExampleOfFunctionInterface
+{
+    public void secondMethod();
+}
+
+The compiler will show the error “Invalid ‘@FunctionalInterface’ annotation; ExampleOfAnotherFunctionInterface is not a functional interface”
+
+5. You can override the methods of the Objects class by declaring them as abstract. The
+compiler does not count toward the interface’s abstract method count.
+
+@FunctionalInterface
+interface ExampleOfFunctionInterface 
+{
+    public void firstMethod();
+    @Override
+    public String toString();
+    
+}
+
+What is the Optional class in Java 8?
+
+he optional class is the final class that is present in java.util package. 
+To avoid null pointer exception
+
+The NullPointerException exception occurs only when the programmer tries to use an object reference that doesn’t point to any instance
+
+maybe it is not initialized, or it initialized with null.
+
+How to use the Optional class?
+Optional is a generic class in java, so you must specify the type of data that can it hold.
+
+public final class Optional<T> {
+
+}
+
+Methods in the Optional class:
+
+empty(): It is used to create an empty optional. It means there is no value present.
+
+ Optional<String> objOfOptional = Optional.empty();
+        // Return true if it contain non-null value else false
+        System.out.println("Is value Present = "+objOfOptional.isPresent());---------false
+		
+of(T value):
+create an object of optional that contains a non-null value. If you try to pass any null value it will throw NullPointerException.
+
+ofNullable(T value): This method is used to create an object of optional that may contain a null value.
+
+How to check whether the value exists/presented or not?
+4. boolean isPresent(): This method is used to check whether the optional is contain any value or not. It returns true if the value is present otherwise false.
+
+  Optional<Integer> objOfOptional = Optional.of(1);
+        // Return true if it contain non-null value else false
+        System.out.println("Is value Present = "+objOfOptional.isPresent());
+        
+        Optional<String> objOfOptional1 = Optional.ofNullable(null);
+        // Return true if it contain non-null value else false
+        System.out.println("Is value Present = "+objOfOptional1.isPresent());
+		
+		
+		5. void ifPresent(Consumer<? super T> action):
+		
+		This method is used to perform given action on a given value if the value is present in optional, otherwise it doesn’t perform any operation.
+		
+		Ex:  Optional<String> objOfOptional = Optional.of("Hi");
+        objOfOptional.ifPresent((a) -> System.out.println("The optional contain value = "+a));-----return
+        
+        Optional<String> objOfOptional1 = Optional.ofNullable(null);
+        objOfOptional1.ifPresent((a) -> System.out.println("The optional contain value");----------not return
+		
+		
+		orElse(T other): 
+		   Optional<String> obj = Optional.of("Hi");
+        System.out.println("Value from Optional = "+obj.orElse("Hello"));
+        
+        Optional<String> obj1 = Optional.ofNullable(null);
+        System.out.println("Value from specifeid parameter = "+obj1.orElse("Hello"));
+
+Output: Value from Optional = Hi
+Value from specifeid parameter = Hello
+-----------------------------------------------------------------String---------------
+Why is String immutable in Java?
+============================================================
+
+String pool is possible because String is immutable in Java.
+It increases security because any hacker can’t change its value and it’s used for storing sensitive information such as a database username or password.
+
+What is the String class in Java? Is String a data type?
+
+Since String is immutable, it’s safe to use in multi-threading and you don’t need any synchronization.
+
+
+
+https://anywhere.epam.com/en/blog/senior-javascript-developer-interview-questions
+
+@SpringBootApplication :
+ @Configuration, @EnableAutoConfiguration, and @ComponentScan with their default attributes.
+ 
+ @SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+public class Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Application.class, args);
+    }
+}
+
+@Configuration
+Configuration class for Java-based configuration.
+@EnableAutoConfiguration
+
+
+
+2. @EnableAutoConfiguration:
+
+MVC
+defult servers and cloud db
+
+
+Hibernet:
+
+=================
+Hibernate Lifecycle:
+
+a POJO class using the new operator then the object is in the transient state. This object is not connected with any hibernate session. As it is not connected to any Hibernate Session
+
+Transient State
+Persistent State
+Detached State
+Removed State
+
+Transient State:
+
+a POJO class using the new operator then the object is in the transient state. This object is not connected with any hibernate session. As it is not connected to any Hibernate Session
+
+Employee e = new Employee();   
+e.setId(21);  
+e.setFirstName("Neha");  
+e.setMiddleName("Shri");  
+e.setLastName("Rudra")
+
+State 2: Persistent State:
+Once the object is connected with the Hibernate Session then the object moves into the Persistent State. So, there are two ways to convert the Transient State to the Persistent State 
+
+Using the hibernated session, save the entity object into the database table.
+Using the hibernated session, load the entity object into the database table.
+
+session.persist(e);
+session.save(e);
+session.saveOrUpdate(e);
+session.update(e);
+session.merge(e);
+session.lock(e);
+
+// Transient State
+Employee e = new Employee("Neha Shri Rudra", 21, 180103); 
+
+
+//Persistent State
+session.save(e);
+
+State 3: Detached State:
+For converting an object from Persistent State to Detached State, we either have to close the session or we have to clear its cache. As the session is closed here or the cache is cleared, then any changes made to the data will not affect the database table. Whenever needed, the detached object can be reconnected to a new hibernate session. To reconnect the detached object to a new hibernate session, we will use the following methods as follows:
+
+merge()
+update()
+load()
+refresh()
+save()
+update()
+Following are the methods used for the detached state :
+
+session.detach(e);
+session.evict(e);
+session.clear();
+session.close();
+// Transient State
+Employee e = new Employee("Neha Shri Rudra", 21, 180103);
+// Persistent State 
+session.save(e); 
+
+// Detached State
+session.close(); 
+
+State 4: Removed State 
+In the hibernate lifecycle it is the last state. In the removed state, when the entity object is deleted from the database then the entity object is known to be in the removed state. It is done by calling the delete() operation. As the entity object is in the removed state, if any change will be done in the data will not affect the database table.
+
+Ex:Employee e = new Employee();     
+Session s = sessionfactory.openSession();
+e.setId(01);
+
+// Persistent State
+session.save(e)  
+
+// Removed State                 
+session.delete(e);  
+
+Validation:
+@NotNull
+@NotEmpty
+@NotBlank
+@Min
+@Max
+@Future
+@FutureOrPresent
+@PastOrPresent
+
+Cascade Types mean how the data should be kept between the two related entities. There are set of pre defined types.
+
+CascadeType.PERSIST : Both save() or persist() operations cascade to related entities.
+CascadeType.MERGE : Related entities are merged when the ownership entity is merged.
+CascadeType.REFRESH : Does same thing for the refresh() operation.
+CascadeType.REMOVE : Removes all related entities association with this setting when the ownership entity is deleted.
+CascadeType.DETACH : Detaches all related entities if a “manual detach” occurs.
+CascadeType.ALL : All of the above cascade operations.
+
+One To One Mapping :
+=================
+a relationship between User and Address. 
+OneToMany: LAZY
+ManyToOne: EAGER
+ManyToMany: LAZY
+OneToOne: EAGER
+How relationship is built???
+child entity primary key as the foreign key of the owner entity.
+So User should have a column in the table to record the address ID
+
+User:
+=======
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String name;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "address_id", referencedColumnName = "id")
+    Address address;
+}
+===============
+Address:
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "addresses")
+public class Address {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String street;
+    String city;
+    @JsonIgnore
+    @OneToOne(mappedBy = "address")
+    User user;
+
+In the child entity(Adress), we just need to link the name of the property mapped in User entity.
+
+“@JsonIgnore” annotation was placed there for user property since I do not need to have the user object to be seen in Address data. Just to ignore that field from JSON object.
+This way we can have a Bi directional one-to-one mapping!
+===================================================
+One To Many Mapping:
+
+relationship between Post and Comment entities.
+How relationship is built???
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "posts")
+public class Post {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String title;
+    String description;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "post_id", referencedColumnName = "id")
+    Set<Comment> comments = new HashSet<>();
+}
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "comments")
+public class Comment {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String author;
+    String content;
+    @Column(name = "post_id")
+    Long postId;
+}
+
+This way we can have a Uni directional one-to-one mapping!
+
+Many To Many Mapping:
+a Employee management system, every employee has one or more Role. Any employee can have one or more roles and Any role can have one or more employees! Then that is many to many right?
+How relationship is built???
+
+which employee has which role…That’s the need for 3rd table! Simply we can save “employee_id ”and “role_id ” to keep the employee and role associations
+
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "employees")
+public class Employee {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String name;
+    String email;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+        name = "employee_roles",
+        joinColumns = @JoinColumn(
+            name = "employee_id", referencedColumnName = "id"
+        ),
+        inverseJoinColumns = @JoinColumn(
+            name = "role_id", referencedColumnName = "id"
+        )
+    )
+    Set<Role> roles = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id.equals(employee.id) && name.equals(employee.name) && email.equals(employee.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, email);
+    }
+}
+
+
+Employee is the owning entity in the relationship. So, it’s annotated with “@ManyToMany”. We have to place join table config here. So, “@JoinTable” annotation represents this new table with name as “employee_roles”. There we have to give the two columns we use for the associations. They are primary keys in employees and roles tables.
+
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "roles")
+public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long id;
+    String name;
+    @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
+    Set<Employee> employees = new HashSet<>();
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Role role = (Role) o;
+        return id.equals(role.id) && name.equals(role.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+}
+
+==============================
+2. What are Access modifiers in java?
+
+Ans: Access Modifiers are those modifiers that are used to restrict the visibility of classes, fields, methods, and constructors.
+
+Java supports four types of access modifiers:
+
+Private
+Default
+Protected
+Public
+a) Private: Private members of a class can be accessed only within the class. It cannot be accessed from outside the class.
+
+b) Default: Default members of a class are accessible within the same package due to visible only within the package. They cannot be accessed from outside the package.
+
+c) Protected: Protected members of a class are visible within the package. Therefore, we can only access within the package but can be accessed to the subclasses outside the package through the inheritance only.
+
+d) Public: Public members are visible anywhere. So, we can access it anywhere within or outside the package.
+
+3. Can we have a private constructor in Java?
+
+Ans: Yes, we can have a private constructor in Java.
+
+The private constructor is used when we do not want to create the object of that class.
+We cannot create a subclass of that class.
+It is also used in Singleton design and Factory method design patterns.
+  
+  
+  Sorting HashValue :
+  
+      Map<String, Integer> sorted = budget
+        .entrySet()
+        .stream()
+        .sorted(comparingByValue())
+        .collect(
+            toMap(e -> e.getKey(), e -> e.getValue(), (e1, e2) -> e2,
+                LinkedHashMap::new));
+				
+IMMUTABLE:	
+Immutable class in java means that once an object is created, we cannot change its content. In Java, all the wrapper classes (like Integer, Boolean, Byte, Short) and String class is immutable. We can create our own immutable class as well
+
+Declare the class as final so it can’t be extended.
+Make all of the fields private so that direct access is not allowed.
+Don’t provide setter methods for variables.
+Make all mutable fields final so that a field’s value can be assigned only once.
+Initialize all fields using a constructor method performing deep copy.
+Perform cloning of objects in the getter methods to return a copy rather than returning the actual object reference.
+
+public final class Employee  
+{    
+final String pancardNumber;    
+public Employee(String pancardNumber)  
+{    
+this.pancardNumber=pancardNumber;    
+}  
+public String getPancardNumber(){    
+return pancardNumber;    
+}    
+}    
+public class ImmutableDemo  
+{  
+public static void main(String ar[])  
+{  
+Employee e = new Employee("ABC123");  
+String s1 = e.getPancardNumber();  
+System.out.println("Pancard Number: " + s1);  
+}  
+}  
+
+advantages:
+thread safety, predictability, caching, easier testing, simplified error handling, and alignment with functional programming principles
+
+Collection:
+ArrayList:
+
+2) ArrayList stores Heterogeneous objects(different types).
+3) In ArrayList it is possible to insert Null objects.
+4) Duplicate objects are allowed.
+5) ArrayList preserved Insertion order it means whatever the order we inserted the data in the same 
+way output will be printed. 
+
+ArrayList methods are non-synchronized methods.
+7) The under laying data structure is Resizable array.
+8) By using cursor we are able to retrieve the data from ArrayList : Iterator , ListIterator
+
+Arrays are by default type safe it means the array contains only specific type of data.
+Int array ---> stores only int data 
+String array ---> stores only String data 
+✓ Collections are not type safe (no guarantee on data) it means the collections can store different 
+types of objects.
+ArrayList al = new ArrayList();
+al.add(10);
+al.add(“ratan”);
+If the collections are not type safe while reading the data at runtime we have to perform,
+ 1. Type checking
+ 2. Type casting 
+ 
+ LinkedList:
+ 
+ Heterogeneous objects are allowed.
+3) Null insertion is possible.
+4) Insertion order is preserved.
+5) Linked List methods are non-synchronized.
+6) Duplicate objects are allowed.
+7) The under laying data structure is double linkedlist.
+8) cursors :- Iterator,ListIterator.
+
+ArrayList vs. LinkedList:
+✓ ArrayList internally uses dynamic resizablearray to store the elements 
+LinkedList internally uses double linkedlist to store the elements.
+✓ Insertion, remove data on Arraylist is slow because when we perform the operations internally it 
+requires more shift operations. 
+But insertion,remove on LinkedList is faster because shift operations are not required.
+✓ With respect the memory Arraylist is recommended.
+With respect the memory LinkedList is not recommended.
+✓ ArrayList is implements RandomAccess interface hence the data Access fast.
+But LinkedList not implementing RandomAccess interface hence the data Access slow.
+✓ Arraylist needs to be resized when runs out of space.
+LinkedList nodes are allocated & released when necessary.
+✓ RandomAccess is marker interface present in java.util package provides read operations 
+capabilities.
+
+List vs. Set : List allows duplicates & set duplicates not allowed.
+Java.util.HashSet:
+
+
+Heterogeneous objects are allowed.
+3) Duplicate objects are not allowed if we are trying to insert duplicate values then we won't get 
+any compilation &Execution errors simply add method returns false .
+4) Null insertion is possible but if we are inserting more than one null it return only one null value 
+(because duplicates are not allowed).
+5) The under laying data structure is HashTable.
+6) Insertion order is not preserved it is based on the hash code of the object (hashing mechanism).
+7) Methods are non-synchronized.
+8) It supports only Iterator cursor to retrieve the data
+
+Java.util.LinkedHashSet:
+
+2. Heterogeneous objects are allowed.
+3. Duplicate objects are not allowed if we are trying to insert duplicate values then we won’t get any 
+compilation &Execution errors simply add method return false.
+4. Insertion order is preserved.
+5. Null insertion is possible only once(because duplication is not possible).
+6. The under laying data structure is LinkedList & hashTable.
+7. Methods are non-synchronized.
+8. It supports only Iterator cursor retrieve the data.
+Note : HashSet not preserved insertion order but LinkedHashset preserved insertion order.
+
+
+Java.util.TreeSet:
+
+Heterogeneous data is not allowed.
+3. Insertion order is not preserved but it sorts the elements in some sorting order. 
+4. Duplicate objects are not allowed.
+5. Null insertion is possible only once.
+6. TreeSet Methods are non-synchronized.
+7. The underlying data Structure is Balanced Tree.
+8. It supports Iterator cursor to retrieve the data.
+
+
+Map:
+ Map is used to store two objects at a time in the form of key value pairs. Here the key is object & 
+value is object. 
+✓ The key value pair is known as entry, the map contains group of entries.
+✓ In map the keys must be unique but values we can duplicate.
+
+Java.util.HashMap:-
+
+3) Underlying data Structure is HashTable.
+4) Duplicate keys are not allowed but values can be duplicated.
+5) Insertion order is not preserved it is based on hashcode.
+6) Null is allowed for key(only once)and allows for values any number of times.
+7) Every method is non-synchronized
+
+To get all the keys use keyset() method.
+public java/util/Set<K> keySet();
+✓ To get all the values use values() method.
+public java/util/Collection<V> values();
+✓ To get all the entries use entrySet() method.
+public java/util/Set<java/util/Map$Entry<K, V>> entrySet();
+
+
+JDK: provides the environment to develop and execute(run) the Java program.
+
+Development Tools(to provide an environment to develop your java programs)
+JRE (to execute your java program).
+
+JRE : Only run java program
+JVM (Java Virtual Machine) : part of JDK and JRE   -------line by line code(inteprtor)
+
+memory:
+method area
+Heap
+stack
+pc registor
+native method stack
+
+Declaring a variable as transient inside a class will not allow to serialize or write the object into byte stream.
+
+JIT:
+
+JVM stands for Java Virtual Machine it is a Java interpreter:
+It is responsible for loading, verifying, and executing the bytecode created in Java.
+
+
+
+
+STring :
+
+  String s="Sachin";  
+   s.concat(" Tendulkar");//concat() method appends the string at the end  
+   System.out.println(s);//will print Sachin because strings are immutable objects  
+   
+   Output:Sachin
+   
+   we have two object are created in scp area : sachin and sachintendulakar
+   if we assign any reference of s.concat() then we print sachintendulakar
+   
+ How to Modify the request header before reaching to controllers
+ ==============================================================
+ 
+ Nodejs
+ 
+  you can use middleware to modify request headers before they reach your route handlers (controllers).
+  
+  
+  const express = require('express');
+const app = express();
+
+// Middleware to modify request headers
+app.use((req, res, next) => {
+  // Modify request headers
+  req.headers['x-custom-header'] = 'new-value';
+  
+  // Call the next middleware/route handler
+  next();
+});
+
+app.get('/', (req, res) => {
+  res.send('Header modified');
+});
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
+
+java controllers:
+
+In Spring Boot, you can use a Filter to modify request headers before they reach your controllers.
+
+
+
+public class HeaderModificationFilter implements Filter {
+
+    @Override
+    public void init(FilterConfig filterConfig) throws ServletException {
+        // Initialization code, if needed
+    }
+
+    @Override
+    public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
+            throws IOException, ServletException {
+        HttpServletRequest httpRequest = (HttpServletRequest) request;
+        HttpServletResponse httpResponse = (HttpServletResponse) response;
+
+        // Modify request headers
+        httpRequest.setAttribute("X-Custom-Header", "new-value");
+
+        // Continue the request
+        chain.doFilter(httpRequest, httpResponse);
+    }
+
+    @Override
+    public void destroy() {
+        // Cleanup code, if needed
+    }
+}
+
+Register this filter in your SpringBootApplication class or configuration:
+
+
+@Configuration
+public class WebConfig {
+
+    @Bean
+    public FilterRegistrationBean<HeaderModificationFilter> loggingFilter() {
+        FilterRegistrationBean<HeaderModificationFilter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter(new HeaderModificationFilter());
+        registrationBean.addUrlPatterns("/*");
+        return registrationBean;
+    }
+}
+
+
+
+When dealing with performance issues related to fetching large amounts of data from a database, there are several strategies you can employ to optimize query performance and reduce data fetching time
+
+**1. Pagination:
+
+SELECT * FROM your_table
+WHERE user_id = ? 
+ORDER BY some_column
+LIMIT 10 OFFSET 20;
+
+
+public Page<YourEntity> getPaginatedData(int page, int size) {
+    Pageable pageable = PageRequest.of(page, size);
+    return yourRepository.findByUserId(userId, pageable);
+}
+
+**3. Selective Columns
+
+SELECT column1, column2 FROM your_table
+WHERE user_id = ?;
+
+**4. Database Optimization
+Make sure your database is well-tuned. This includes:
+
+Vacuuming and analyzing tables (for PostgreSQL).
+Optimizing queries and avoiding complex joins where possible.
+Partitioning tables if they are extremely large.
+
+AOP:
+
+2. What are the core concepts of AOP?
+
+Aspect: A module that encapsulates a cross-cutting concern. It defines the advice and the pointcut where the advice should be applied.
+Advice: The code that is executed at a specified join point. There are different types of advice, such as before, after, around, after-returning, and after-throwing.
+Pointcut: An expression that defines where advice should be applied. It specifies the join points that match certain criteria.
+Join Point: A point in the execution of the application, such as method execution or object instantiation, where an aspect can be applied.
+Weaving: The process of integrating aspects into the codebase. Weaving can be done at compile time, load time, or runtime.
+
+
+Swaagger IO:
+
+@io.swagger.v3.oas.annotations.parameters.RequestBody
+	(
+		content = @Content(schema = @Schema(implementation = GenerateOTPRequest.class), examples = @ExampleObject(value = Samples.GENERATE_OTP_REQUEST_BODY))
+	)
+	
+	@ApiResponses(value = {
+	        @ApiResponse(responseCode = "200", description = "Returns the OTP Reference number after successful generation of OTP and send SMS/Email. Temporarily OTP is appended for testing.",
+	                content = @Content(mediaType = "application/json", 
+	                schema = @Schema(type = "string", 
+	                example = "{\"otpRef\":\"494d5346-ae19-4386-b4ba-87a38f3d51c7~227654\"}" ))),
+	        @ApiResponse(responseCode = "400", description = "Bad Request", content = @Content),
+	        @ApiResponse(responseCode = "422", description = "Invalid Input", content = @Content),
+	        @ApiResponse(responseCode = "500", description = "Encountered an internal error", content = @Content)})
+	
+
+	
+@Primary is an annotation used to indicate that a particular bean should be given preference when multiple beans of the same type are available.
+
+@Bean
+@Primary
+public MyService primaryService() {
+    return new MyServiceImpl1();
+}
+
+@Bean
+public MyService secondaryService() {
+    return new MyServiceImpl2();
+}
+
+primaryService will be used whenever a MyService bean is required unless otherwise specified.
+
+@Qualifier:
+
+
+@Autowired
+@Qualifier("secondaryService")
+private MyService myService;
+
+secondaryService will be injected into myService, even if there are other beans of type MyService.
+
+Combining Both:
+ @Primary and @Qualifier to manage bean injection in a more controlled way. @Primary provides a default, while @Qualifier allows explicit specification when needed
+ 
+  How does Spring Security handle password encoding?
+  
+  BCryptPasswordEncoder
+  
+  7. How do you secure REST APIs using Spring Security?
+  
+  To secure REST APIs, you typically use HTTP Basic authentication, JWT (JSON Web Tokens), or OAuth2. For example, with JWT, you would:
+
+Implement a filter to parse and validate JWTs.
+Configure security to require JWT for specific endpoints.
+Example of configuring HTTP Basic Authentication:
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+    http
+        .authorizeRequests()
+            .anyRequest().authenticated()
+            .and()
+        .httpBasic();
+}
+
+. What is the difference between @Secured and @PreAuthorize annotations?
+
+@Secured: This annotation is used to specify the roles required to access a method. It only supports role-based access and is less flexible.
+
+@Secured("ROLE_ADMIN")
+public void someMethod() {
+    // Method implementation
+}
+
+
+@PreAuthorize: This annotation is more powerful and allows for expression-based access control. You can use Spring Expression Language (SpEL) to define complex security expressions.
+
+
+@PreAuthorize("hasRole('ADMIN') and #user.name == authentication.name")
+public void someMethod(User user) {
+    // Method implementation
+}
+
+What are HTTP headers and why are they important?
+Content-Type:
+Authorization
+Cache-Control
+User-Agent
+
+2. How can you access HTTP headers in a Spring Boot controller?
+@RequestHeader
+
+@RestController
+public class MyController {
+
+    @GetMapping("/headers")
+    public String getHeaders(@RequestHeader("User-Agent") String userAgent,
+                             @RequestHeader(value = "Accept-Language", defaultValue = "en-US") String acceptLanguage) {
+        return "User-Agent: " + userAgent + ", Accept-Language: " + acceptLanguage;
+    }
+}
+
+3. How can you set HTTP headers in a Spring Boot response?
+1st way:
+
+ @GetMapping("/header-example")
+    public String headerExample(HttpServletResponse response) {
+        response.setHeader("Custom-Header", "HeaderValue");
+        return "Hello, World!";
+    }
+	
+	2:
+	     HttpHeaders headers = new HttpHeaders();
+        headers.add("Custom-Header", "HeaderValue");
+
+        return new ResponseEntity<>("Hello, World!", headers, HttpStatus.OK);
+================================================================================================================
+4 when we can use Spring Boot - Interceptor?
+
+Logging Requests and Responses: Interceptors can be used to log details of incoming requests and outgoing responses, which is helpful for debugging and monitoring.
+
+Authentication and Authorization: Before a request reaches your controller, you can use interceptors to check for authentication tokens or permissions. This is useful for enforcing security policies.
+
+Modifying Requests and Responses: Interceptors can be used to modify request parameters or headers before they reach the controller or to alter responses before they are sent back to the client.
+
+Performance Metrics: You can measure the time taken for processing a request and generate performance metrics. This can help in identifying performance bottlenecks.
+
+Cross-Cutting Concerns: Any functionality that needs to be applied to multiple controllers, like adding common headers or handling exceptions, can be centralized in an interceptor.
+
+Request Wrapping and Unwrapping: Sometimes, you may need to wrap a request in a custom object or unwrap a response. Interceptors can handle this wrapping/unwrapping process.
+
+Log in
+
+Sign up
+You said:
+when we can use Spring Boot - Interceptor
+ChatGPT said:
+ChatGPT
+Spring Boot Interceptors can be very useful in various scenarios to enhance your application's functionality. Here are some common use cases:
+
+Logging Requests and Responses: Interceptors can be used to log details of incoming requests and outgoing responses, which is helpful for debugging and monitoring.
+
+Authentication and Authorization: Before a request reaches your controller, you can use interceptors to check for authentication tokens or permissions. This is useful for enforcing security policies.
+
+Modifying Requests and Responses: Interceptors can be used to modify request parameters or headers before they reach the controller or to alter responses before they are sent back to the client.
+
+Performance Metrics: You can measure the time taken for processing a request and generate performance metrics. This can help in identifying performance bottlenecks.
+
+Cross-Cutting Concerns: Any functionality that needs to be applied to multiple controllers, like adding common headers or handling exceptions, can be centralized in an interceptor.
+
+Request Wrapping and Unwrapping: Sometimes, you may need to wrap a request in a custom object or unwrap a response. Interceptors can handle this wrapping/unwrapping process.
+
+How to Use Interceptors in Spring Boot
+Implement HandlerInterceptor: Create a class that implements the HandlerInterceptor interface and override the methods you need, such as preHandle, postHandle, and afterCompletion.
+
+java
+Copy code
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.HandlerInterceptor;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@Component
+public class MyInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // Pre-processing logic
+        return true; // Continue the request
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        // Post-processing logic
+    }
+
+    @Override
+    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+        // Cleanup logic
+    }
+}
+
+
+================================
+
+Null value inserting in Collection
+
+ArrayList:
+==========
+Allows Null Values: Yes.
+Allows Null Elements: You can add multiple null elements to an ArrayList
+
+LinkedList:
+============
+Allows Null Values: Yes.
+Allows Null Elements: You can add multiple null elements to a LinkedList.
+
+HashSet:
+===============
+Allows Null Values: Yes.
+Allows Null Elements: A HashSet allows a single null element. Adding multiple null elements will result in only one null being present in the set.
+LinkedHashSet:
+===================================
+Allows Null Values: Yes.
+Allows Null Elements: A LinkedHashSet also allows a single null element. Adding multiple nulls will result in only one null being present.
+
+HashMap:
+=====================
+Allows Null Values: Yes.
+Allows Null Keys: Yes, you can have one null key.
+Allows Null Values: You can have multiple null values.
+
+LinkedHashMap:
+=============================
+Allows Null Values: Yes.
+Allows Null Keys: Yes, you can have one null key.
+Allows Null Values: You can have multiple null values.
+TreeMap:
+==========================
+Allows Null Values: No.
+Allows Null Keys: No.
+Allows Null Values: Cannot have null keys or values because it relies on natural ordering or a comparator, and null cannot be compared.
+
+
+Collections that Allow Null Values: ArrayList, LinkedList, HashSet, LinkedHashSet, HashMap, and LinkedHashMap.
+Collections that Do Not Allow Null Values: TreeSet, TreeMap
+
+
+what is difference between callable and runnable?
+=====================================================
+Callable and Runnable are two functional interfaces in Java used to represent tasks that can be executed by threads. They are part of the java.util.concurrent package and provide a way to define tasks for execution in a concurrent environment
+
+Runnable: Represents a task that can be executed concurrently  ,not return a result and do not throw checked exceptions.
+method : run()
+
+ublic class MyRunnable implements Runnable {
+    @Override
+    public void run() {
+        System.out.println("Runnable task is running");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Runnable myRunnable = new MyRunnable();
+        Thread thread = new Thread(myRunnable);
+        thread.start();
+    }
+}
+
+Callable:Represents a task that can be executed concurrently and returns a result(future obj)
+Method: V call() throws Exception
+public class MyCallable implements Callable<Integer> {
+    @Override
+    public Integer call() throws Exception {
+        System.out.println("Callable task is running");
+        return 42; // Return a result
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        Callable<Integer> myCallable = new MyCallable();
+        Future<Integer> future = executorService.submit(myCallable);
+
+        try {
+            Integer result = future.get(); // Wait for the result
+            System.out.println("Result from Callable: " + result);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            executorService.shutdown();
+        }
+    }
+	
+	
+	Concept of Circuit Breaker:
+	===============================
+	Closed: throus
+ check the component and service or controller and throsold limits of request and response ,limit exists then moved open state.
+
+Open:
+Here send error msg to fallback method response to clients and find the fix and given particual amount of time moved half open.
+
+Half-Open:
+
+test the issue if it is fixed or not and if it not fixed moved open ciructe.
+
+what are the way to check logs in spring boot microservices?
+========================================================================
+
+1. Local Logging:
+
+a. Console Logs:
+
+Configure log levels and patterns in application.properties or application.yml
+
+application.properties
+logging.level.root=INFO
+logging.level.com.yourcompany=DEBUG
+logging.file.name=app.log
+logging.file.path=/var/log/myapp
+
+b. Log Files:
+
+Spring Boot can write logs to a file. Configure the logging file path and name as shown above.
+Use rolling file appenders to manage log size and archival.
+
+2. Centralized Logging:
+
+a. ELK Stack (Elasticsearch, Logstash, Kibana):
+
+Elasticsearch: A search and analytics engine where logs are indexed.
+Logstash: Collects and processes logs, then forwards them to Elasticsearch.
+Kibana: Provides a web interface to visualize and search through logs stored in Elasticsearch.
+b. Fluentd and Grafana Loki:
+
+Fluentd: Collects logs from various sources and forwards them to destinations like Elasticsearch or other data stores.
+Grafana Loki: Works well with Grafana to visualize logs. Loki is optimized for high availability and performance.
+c. Graylog:
+
+An open-source log management tool that provides centralized logging and analysis.
+d. Splunk:
+
+A commercial solution for indexing and searching logs, with advanced analytics and visualization capabilities.
+
+3. Log Aggregation and Management Services
+
+a. AWS CloudWatch:
+
+If using AWS, you can stream logs to CloudWatch Logs for centralized management and monitoring.
+b. Google Cloud Logging:
+
+For Google Cloud, use Cloud Logging to aggregate and analyze logs from your microservices.
+c. Azure Monitor:
+
+Azure Monitor can be used to collect and analyze logs from applications running in the Azure cloud.
+4. Distributed Tracing
+a. Spring Cloud Sleuth:
+
+Adds trace and span IDs to your logs, which can be used to correlate logs across different microservices.
+Works well with distributed tracing systems like Zipkin and Jaeger.
+b. Zipkin/Jaeger:
+
+Distributed tracing systems that provide insights into how requests flow through various microservices.
+5. Logging Libraries
+a. Logback:
+
+The default logging framework used by Spring Boot, highly configurable.
+b. Log4j2:
+
+Another popular logging library, often used as an alternative to Logback.
+6. Application Performance Monitoring (APM)
+a. New Relic, Datadog, Dynatrace:
+
+These tools provide logging along with performance monitoring and analytics, giving you a holistic view of your application's health.
+
+Junit Testing:
+
+============================
+<dependencies>
+    <!-- JUnit 5 dependencies -->
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-api</artifactId>
+        <version>5.9.0</version> <!-- Use the latest version -->
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter-engine</artifactId>
+        <version>5.9.0</version>
+        <scope>test</scope>
+    </dependency>
+    <!-- Optional: For integration with JUnit 4 (if needed) -->
+    <dependency>
+        <groupId>org.junit.vintage</groupId>
+        <artifactId>junit-vintage-engine</artifactId>
+        <version>5.9.0</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+Create a test class in the src/test/java directory. Here’s a basic example:
+
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class MyServiceTest {
+
+    @Test
+    void testAddition() {
+        MyService service = new MyService();
+        int result = service.add(2, 3);
+        assertEquals(5, result, "2 + 3 should equal 5");
+    }
+}
+
+
+@Test: Marks a method as a test method.
+@BeforeEach: Runs before each test method.
+@AfterEach: Runs after each test method.
+@BeforeAll: Runs once before all test methods in the test class.
+@AfterAll: Runs once after all test methods in the test class.
+@Disabled: Temporarily disables a test method or class.
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class MyServiceTest {
+
+    private MyService service;
+
+    @BeforeEach
+    void setUp() {
+        service = new MyService(); // Initialize before each test
+    }
+
+    @AfterEach
+    void tearDown() {
+        service = null; // Clean up after each test
+    }
+
+    @Test
+    void testAddition() {
+        int result = service.add(2, 3);
+        assertEquals(5, result);
+    }
+
+    @Test
+    void testSubtraction() {
+        int result = service.subtract(5, 3);
+        assertEquals(2, result);
+    }
+}
+
+Parameterized Tests: Run the same test with different parameters using @ParameterizedTest.
+Assertions and Assumptions: Use additional assertion methods and assumption methods for more complex test scenarios.
+Tagging and Filtering: Organize and run tests based on tags.
+
+==================Stream APi====================
+
+ Given a list of integers, filter out the odd numbers and then square the remaining even numbers.
+ List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6);
+List<Integer> result = numbers.stream()
+                              .filter(n -> n % 2 == 0)
+                              .map(n -> n * n)
+                              .collect(Collectors.toList());
+Reduction and Aggregation:
+Reduce: Use .reduce() to accumulate results. This is often used for summing numbers, concatenating strings, etc.
+Aggregation: Use methods like .count(), .sum(), .average(), and .max()/.min() to perform aggregate operations.
+
+Find the sum of the squares of all numbers in a list.
+int sumOfSquares = numbers.stream()
+                           .map(n -> n * n)
+                           .reduce(0, Integer::sum);
+						   
+3. Sorting:sorted() to sort elements. This can be done in natural order or with a custom comparator.
+Sort a list of strings by their length.
+
+List<String> names = Arrays.asList("John", "Paul", "George", "Ringo");
+List<String> sortedNames = names.stream()
+                                .sorted(Comparator.comparingInt(String::length))
+                                .collect(Collectors.toList());
+								
+								
+4. Grouping and Partitioning:
+Group by: Use .collect(Collectors.groupingBy(...)) to group elements by some criteria.
+Partition by: Use .collect(Collectors.partitioningBy(...)) to divide elements into two groups based on a predicate.
+	Group a list of strings by their lengths.							
+		Map<Integer, List<String>> groupedByLength = names.stream()
+                                                  .collect(Collectors.groupingBy(String::length));
+5. FlatMapping:
+5. FlatMapping
+FlatMap: Use .flatMap() to transform and flatten nested structures, like converting a list of lists into a single list
+
+Given a list of lists of integers, produce a single list of integers												  
+List<List<Integer>> listOfLists = Arrays.asList(Arrays.asList(1, 2), Arrays.asList(3, 4));
+List<Integer> flattenedList = listOfLists.stream()
+                                         .flatMap(List::stream)
+                                         .collect(Collectors.toList());			
+6. Distinct and Limiting
+Distinct: Use .distinct() to remove duplicate elements.
+Limit: Use .limit() to restrict the number of elements in the result.
+
+List<Integer> numbers = Arrays.asList(1, 2, 2, 3, 4, 5, 5);
+List<Integer> firstThreeDistinct = numbers.stream()
+                                          .distinct()
+                                          .limit(3)
+                                          .collect(Collectors.toList());
+			
+
+@PrimaryKeyJoinColumn:
+=====================
+// Base class
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "person")
+public class Person {
+    
+    @Id
+    private Long id;
+    
+    private String name;
+    
+    // Getters and setters
+}
+
+// Subclass
+@Entity
+@Table(name = "employee")
+@PrimaryKeyJoinColumn(name = "person_id")
+public class Employee extends Person {
+    
+    private String jobTitle;
+    
+    // Getters and setters
+}
+
+@Entity
+@Table(name = "customer")
+@PrimaryKeyJoinColumn(name = "person_id")
+public class Customer extends Person {
+    
+    private String email;
+    
+    // Getters and setters
+}
+
+Use the @PrimaryKeyJoinColumn annotation to define the column in a subclass table that acts as a foreign key to the primary key of the superclass table. This is particularly relevant when using the joined table inheritance strategy in JPA, allowing for a clear and customized mapping of entity relationships.
+
+ Find the longest string in a list of strings using Java streams:
+ 
+ List<String> strings = Arrays
+              .asList("apple", "banana", "cherry", "date", "grapefruit");
+Optional<String> longestString = strings
+              .stream()
+              .max(Comparator.comparingInt(String::length));
+			  
+Q. Calculate the average age of a list of Person objects using Java streams:			  
+ List<Person> persons = Arrays.asList(
+    new Person("Alice", 25),
+    new Person("Bob", 30),
+    new Person("Charlie", 35)
+);
+double averageAge = persons.stream()
+                          .mapToInt(Person::getAge)
+                          .average()
+                          .orElse(0);
+
+Q. Merge two sorted lists into a single sorted list using Java streams:
+
+List<Integer> list1 = Arrays.asList(1, 3, 5, 7, 9);
+List<Integer> list2 = Arrays.asList(2, 4, 6, 8, 10);
+List<Integer> mergedList = Stream.concat(list1.stream(), list2.stream())
+                                .sorted()
+                                .collect(Collectors.toList());
+	Q. Find the intersection of two lists using Java streams:
+List<Integer> list1 = Arrays.asList(1, 2, 3, 4, 5);
+List<Integer> list2 = Arrays.asList(3, 4, 5, 6, 7);
+List<Integer> intersection = list1.stream()
+                                  .filter(list2::contains)
+                                  .collect(Collectors.toList());
+Q. Remove duplicates from a list while preserving the order using Java streams:
+List<Integer> numbersWithDuplicates = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 5);
+List<Integer> uniqueNumbers = numbersWithDuplicates
+                                       .stream()
+                                       .distinct()
+                                       .collect(Collectors.toList());
+Q. Given a list of transactions, find the sum of transaction amounts for each day using Java streams
+List<Transaction> transactions = Arrays.asList(
+    new Transaction("2022-01-01", 100),
+    new Transaction("2022-01-01", 200),
+    new Transaction("2022-01-02", 300),
+    new Transaction("2022-01-02", 400),
+    new Transaction("2022-01-03", 500)
+);
+
+Map<String, Integer> sumByDay = transactions
+                        .stream()
+                        .collect(Collectors.groupingBy(Transaction::getDate,
+                               Collectors.summingInt(Transaction::getAmount)));
+	
+Q. Given a list of strings, find the frequency of each word using Java streams:
+List<String> words = Arrays.asList("apple", "banana", "apple", "cherry", 
+                                    "banana", "apple");
+Map<String, Long> wordFrequency = words
+              .stream()
+              .collect(Collectors
+                    .groupingBy(Function.identity(), Collectors.counting())
+                );	
+				
+Q. Remove duplicates from a list while preserving the order using Java streams:
+
+List<Integer> numbersWithDuplicates = Arrays.asList(1, 2, 3, 2, 4, 1, 5, 6, 5);
+List<Integer> uniqueNumbers = numbersWithDuplicates
+                                       .stream()
+                                       .distinct()
+                                       .collect(Collectors.toList());	
+
+https://devwithus.com/spring-boot-rest-api-unit-testing/
+
+
+How to Reverse elements of a Parallel Stream in Java?
+
+ Count occurrence of a given character in a string using Stream API in Java.
+ Count occurrence of a given character in a string using Stream API in Java. 
+ 
+ 
+ Reverse A String:
+ 
+ What is syncronization and non syncronization?
+ Hibernate Inheritence:
+ ========================================
+ Hibernate Table Per Hierarchy using Annotation:
+ ==============================================
+ @Inheritance(strategy=InheritanceType.SINGLE_TABLE), 
+ @DiscriminatorColumn and @DiscriminatorValue annotations for mapping table per hierarchy strategy.
+ 
+ Ex:
+  Employee is the super class for Regular_Employee and Contract_Employee classes.
+  
+  
+  Extract all the table column details one table and extra one column that is  @DiscriminatorColumn------which table column details it shows
+  
+  
+MyClass obj = new MyClass("example", 42);
+String jsonString = objectMapper.writeValueAsString(obj);
+System.out.println(jsonString); // Output: {"name":"example","value":42}
+
+
+ 
+ Array:
+ 
+ Reverse an array:
+ 
+    int left = 0, right = array.length - 1;
+        while (left < right) {
+            int temp = array[left];
+            array[left] = array[right];
+            array[right] = temp;
+            left++;
+            right--;
+        }
+ Find the Maximum Element in an Array:
+   int max = array[0];
+        for (int num : array) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+	Check for Duplicates:
+	
+	 HashSet<Integer> set = new HashSet<>();
+        for (int num : array) {
+            if (!set.add(num)) {
+                return true;
+            }
+        }
+        return false;
+    }
+	String str="sdfsdfsdf435345"
+	=========================================
+	How can you filter only the digits from the string?
+	String digits = s.chars()
+                 .filter(Character::isDigit)
+                 .mapToObj(c -> String.valueOf((char) c))
+                 .collect(Collectors.joining()); // digits will be "324234"
+				 
+	How do you count the number of letters in the string using streams
+
+long letterCount = s.chars()
+                     .filter(Character::isLetter)
+                     .count(); // letterCount will be 8
+					 
+	How can you convert all characters to uppercase using streams?
+	String upperCase = s.chars()
+                     .mapToObj(c -> String.valueOf((char) c).toUpperCase())
+                     .collect(Collectors.joining()); // upperCase will be "ASFDAS324234"
+	How can you convert all characters to uppercase using streams?
+String upperCase = s.chars()
+                     .mapToObj(c -> String.valueOf((char) c).toUpperCase())
+                     .collect(Collectors.joining()); // upperCase will be "ASFDAS324234"	
+How would you find the first digit in the string using streams?	
+
+Optional<Character> firstDigit = s.chars()
+                                   .filter(Character::isDigit)
+                                   .mapToObj(c -> (char) c)
+                                   .findFirst(); // firstDigit will be Optional[3]		 
+								   
+	How would you count the number of letters and digits?							   
+int letterCount = 0;
+int digitCount = 0;
+for (char c : s.toCharArray()) {
+    if (Character.isLetter(c)) {
+        letterCount++;
+    } else if (Character.isDigit(c)) {
+        digitCount++;
+    }
+}	
+
+How can you reverse the characters in the string using streams?
+String reversed = new StringBuilder(s.chars()
+                                     .mapToObj(c -> String.valueOf((char) c))
+                                     .collect(Collectors.toList())
+                                     .stream()
+                                     .collect(Collectors.toList()))
+                     .reverse()
+                     .toString(); // reversed will be "432234safdsa"
+
+String Array:
+=========================================
+How can you find the longest string in the array?
+String[] arr = {"weas", "sadas", "asdsa", "uyyu"};
+String longest = Arrays.stream(arr)
+                       .max(Comparator.comparingInt(String::length))
+                       .orElse(null);				 
+	
+How can you create a list of string lengths from the array?
+
+String[] arr = {"weas", "sadas", "asdsa", "uyyu"};
+List<Integer> lengths = Arrays.stream(arr)
+                              .map(String::length)
+                              .collect(Collectors.toList()); // lengths will be [4, 5, 5, 4]
+
+
+ How can you find the maximum value in the array?
+
+int[] arr = {1, 2, 23, 34, 56};
+OptionalInt max = Arrays.stream(arr).max();
+
+How can you filter even numbers from the array?
+nt[] arr = {1, 2, 23, 34, 56};
+List<Integer> evenNumbers = Arrays.stream(arr)
+                                   .filter(n -> n % 2 == 0)
+                                   .boxed()
+                                   .collect(Collectors.toList()); // evenNumbers will be [2, 34, 56]
+How can you sort the array in descending order?
+
+int[] sortedDescending = Arrays.stream(arr)
+                               .boxed()
+                               .sorted(Comparator.reverseOrder())
+                               .mapToInt(Integer::intValue)
+                               .toArray(); // sortedDescending will be [56, 34, 23, 2, 1]
+							   
+							   
